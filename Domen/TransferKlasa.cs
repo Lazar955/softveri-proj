@@ -11,6 +11,9 @@ namespace Domen
         kraj = 1,
         LoginDoktora,
         Unesi,
+        ObrisiLek,
+        PretraziLekove,
+        VratiSveDijagnoze,
     }
     [Serializable]
     public class TransferKlasa

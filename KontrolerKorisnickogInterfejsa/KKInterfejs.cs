@@ -87,6 +87,34 @@ namespace KontrolerKorisnickogInterfejsa
                     return 0;
                 }
             }
+
+
+        }
+
+        //public void ObrisiLek(DataGridView dgvRezultati, TextBox kriterijum)
+        public void ObrisiLek()
+        {
+            DialogResult dr = MessageBox.Show("Da li ste sigurni da zelite da obrisete lek?", "Alert!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dr == DialogResult.Yes)
+            {
+
+                //Lek lek = dgvRezultati.CurrentRow.DataBoundItem as Lek;
+
+                //Teestiranje
+                Lek lek = new Lek { LekID = 1 };
+                int rezultat = komunikacija.ObrisiLek(lek);
+                if (rezultat > 0)
+                {
+
+                    MessageBox.Show("Sistem je obrisao lek");
+                    PronadjiAutomobil(kriterijum, dgvRezultati, null, false);
+                }
+                else
+                {
+                    MessageBox.Show("Sistem ne moze da obrise automobil");
+                }
+            }
+            else if (dr == DialogResult.Cancel) { }
         }
     }
 }

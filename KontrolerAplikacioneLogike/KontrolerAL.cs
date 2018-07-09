@@ -22,5 +22,11 @@ namespace KontrolerAplikacioneLogike
             UnesiSO unesi = new UnesiSO();
             return Convert.ToInt32(unesi.IzvrsiSO(odo));
         }
+
+        public int ObrisiLek(Lek lek)
+        {
+            ObrisiLek obrisi = new ObrisiLek();
+            return Convert.ToInt32(obrisi.IzvrsiSO(lek));
+        }
     }
 }
