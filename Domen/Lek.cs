@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data.OleDb;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,7 @@ namespace Domen
     [Serializable]
     public class Lek : IOpstiDomenskiObjekat
     {
+        [Browsable(false)]
         public int LekID { get; set; }
         public string Ime { get; set; }
         public string Opis { get; set; }
@@ -20,7 +22,7 @@ namespace Domen
 
         public string VratiImeTabele()
         {
-            return "lek" ;
+            return "Lek" ;
         }
 
         public string VratiKljucniAtribut()
@@ -30,7 +32,7 @@ namespace Domen
 
         public string VratiKoloneZaInsert()
         {
-            throw new NotImplementedException();
+            return $"(Ime,Opis,Oblik,[Doza],[INM], Proizvodjac)";
         }
 
         public List<IOpstiDomenskiObjekat> VratiListu(OleDbDataReader citac)
@@ -60,12 +62,24 @@ namespace Domen
 
         public IOpstiDomenskiObjekat VratiObjekat(OleDbDataReader citac)
         {
-            throw new NotImplementedException();
+            var lek = new Lek();
+            if (citac.Read())
+            {
+                lek.LekID = citac.GetInt32(0);
+                lek.Ime = citac.GetString(1);
+                lek.Opis = citac.GetString(2);
+                lek.Doza = citac.GetString(3);
+                lek.Oblik = citac.GetString(4);
+                lek.INM = citac.GetString(5);
+                lek.Proizvodjac = citac.GetString(5);
+            }
+            return lek;
         }
 
         public string VratiUslovZaObjekat()
         {
-            throw new NotImplementedException();
+            //return $"((Lek.Ime='{Ime}')";
+            return $" Ime LIKE '%{Ime}%'";
         }
 
         public string VratiVrednostiZaAzuriranje()
@@ -75,7 +89,7 @@ namespace Domen
 
         public string VratiVrednostiZaInsert()
         {
-            throw new NotImplementedException();
+            return $"('{Ime}','{Opis}','{Oblik}','{Doza}','{INM}','{Proizvodjac}')";
         }
     }
 }

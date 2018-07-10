@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SistemskeOperacije
 {
-    public class ObrisiLek : OpsteSO
+    public class ObrisiLekSO : OpsteSO
     {
         public override object Izvrsi(IOpstiDomenskiObjekat odo, Broker broker)
         {

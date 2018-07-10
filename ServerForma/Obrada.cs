@@ -45,6 +45,18 @@ namespace ServerForma
                             transfer.TransferObjekat = kal.Unesi(transfer.TransferObjekat as IOpstiDomenskiObjekat);
                             formater.Serialize(tok, transfer);
                             break;
+                        case Operacije.ObrisiLek:
+                            transfer.TransferObjekat = kal.ObrisiLek(transfer.TransferObjekat as Lek);
+                            formater.Serialize(tok, transfer);
+                            break;
+                        case Operacije.VratiSveDijagnoze:
+                            transfer.TransferObjekat = kal.VratiListuDijagnoza();
+                            formater.Serialize(tok, transfer);
+                            break;
+                        case Operacije.PretraziLekove:
+                            transfer.TransferObjekat = kal.PretraziLekove(transfer.TransferObjekat as String);
+                            formater.Serialize(tok, transfer);
+                            break;
                         default:
                             break;
                     }

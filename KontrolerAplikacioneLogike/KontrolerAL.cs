@@ -25,8 +25,40 @@ namespace KontrolerAplikacioneLogike
 
         public int ObrisiLek(Lek lek)
         {
-            ObrisiLek obrisi = new ObrisiLek();
+            ObrisiLekSO obrisi = new ObrisiLekSO();
             return Convert.ToInt32(obrisi.IzvrsiSO(lek));
+        }
+
+        public List<Dijagnoza> VratiListuDijagnoza()
+        {
+            var vratiDijagnoze = new VratiSveSO();
+
+            List<IOpstiDomenskiObjekat> tmp = vratiDijagnoze.IzvrsiSO(new Dijagnoza()) as List<IOpstiDomenskiObjekat>;
+
+            List<Dijagnoza> dijagnoze = new List<Dijagnoza>();
+
+            foreach (Dijagnoza d in tmp)
+            {
+                dijagnoze.Add(d);
+            }
+
+            return dijagnoze;
+        }
+
+        public List<Lek> PretraziLekove(string kriterijum)
+        {
+            var tmpLek = new Lek { Ime = kriterijum };
+            var pretraga = new PretragaSO();
+
+            List<IOpstiDomenskiObjekat> tmpList = pretraga.IzvrsiSO(tmpLek) as List<IOpstiDomenskiObjekat>;
+            List<Lek> lekovi = new List<Lek>();
+
+            foreach (Lek lek in tmpList)
+            {
+                lekovi.Add(lek);
+            }
+
+            return lekovi;
         }
     }
 }

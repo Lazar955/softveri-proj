@@ -41,10 +41,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LoginDoktoraSO.cs" />
-    <Compile Include="ObrisiLek.cs" />
+    <Compile Include="ObrisiLekSO.cs" />
     <Compile Include="OpsteSO.cs" />
+    <Compile Include="PretragaSO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnesiSO.cs" />
+    <Compile Include="VratiSveSO.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Domen\Domen.csproj">
