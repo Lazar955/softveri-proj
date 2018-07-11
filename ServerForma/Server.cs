@@ -43,7 +43,7 @@ namespace ServerForma
                 {
                     Socket klijent = soket.Accept();
                     NetworkStream tok = new NetworkStream(klijent);
-                    new Obrada(tok);
+                    new Obrada(tok,klijent);
                 }
             }
             catch (Exception)

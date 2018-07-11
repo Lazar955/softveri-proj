@@ -14,19 +14,30 @@ namespace Klijent
     public partial class RegisterForm : Form
     {
         KKInterfejs kki;
-  
-        public RegisterForm()
+        private int rezultat = 0;
+        private MainForm mainForm;
+        public RegisterForm(KKInterfejs ctrl, MainForm mainForm)
         {
             InitializeComponent();
-            kki = new KKInterfejs();
+            kki = ctrl;
+            this.mainForm = mainForm;
         }
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            int rezultat = kki.ZapamtiDoktora( txtIme,txtPrezime, txtEmail,txtPassword,dtpDatumRodjenja);
+             rezultat = kki.ZapamtiDoktora( txtIme,txtPrezime, txtEmail,txtPassword,dtpDatumRodjenja);
             if (rezultat == 1)
             {
-                //this.Dispose();
+                this.Dispose();
+            }
+        }
+
+        private void RegisterForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (rezultat == 0)
+            {
+                kki.prekiniKonekciju();
+                mainForm.Dispose();
             }
         }
     }

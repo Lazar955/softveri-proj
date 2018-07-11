@@ -30,6 +30,7 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnKraj = new System.Windows.Forms.Button();
             this.btnPregled = new System.Windows.Forms.Button();
             this.btnLekovi = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
@@ -37,6 +38,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnKraj);
             this.panel1.Controls.Add(this.btnPregled);
             this.panel1.Controls.Add(this.btnLekovi);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
@@ -54,6 +56,18 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(597, 485);
             this.panel2.TabIndex = 2;
+            // 
+            // btnKraj
+            // 
+            this.btnKraj.Image = global::Klijent.Properties.Resources.exit;
+            this.btnKraj.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnKraj.Location = new System.Drawing.Point(5, 106);
+            this.btnKraj.Name = "btnKraj";
+            this.btnKraj.Size = new System.Drawing.Size(145, 41);
+            this.btnKraj.TabIndex = 2;
+            this.btnKraj.Text = "Kraj";
+            this.btnKraj.UseVisualStyleBackColor = true;
+            this.btnKraj.Click += new System.EventHandler(this.btnKraj_Click);
             // 
             // btnPregled
             // 
@@ -88,6 +102,8 @@
             this.Controls.Add(this.panel1);
             this.Name = "MainForm";
             this.Text = "Ordinacija";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -99,5 +115,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnPregled;
+        private System.Windows.Forms.Button btnKraj;
     }
 }

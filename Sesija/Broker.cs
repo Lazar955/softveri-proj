@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
+using System.Data;
 
 namespace Sesija
 {
@@ -109,6 +110,24 @@ namespace Sesija
             catch(Exception e)
             {
                 return false;
+            }
+        }
+
+        public object UnesiIVratiID(IOpstiDomenskiObjekat odo)
+        {
+            string upit = $"Insert into {odo.VratiImeTabele()} {odo.VratiKoloneZaInsert()} values {odo.VratiVrednostiZaInsert()}";
+            komanda = new OleDbCommand(upit, konekcija, transakcija);
+
+            int rezultat = komanda.ExecuteNonQuery();
+            if (rezultat == 1)
+            {
+                komanda.CommandText = "SELECT @@IDENTITY";
+                object id = komanda.ExecuteScalar();
+                return id;
+            }
+            else
+            {
+                throw new Exception();
             }
         }
 

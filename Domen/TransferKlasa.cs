@@ -13,7 +13,13 @@ namespace Domen
         Unesi,
         ObrisiLek,
         PretraziLekove,
+        VratiSvePacijente,
         VratiSveDijagnoze,
+        VratiSveLekove,
+        PretraziPacijente,
+        ZapamtiPregled,
+        PretraziPregledePacijenta,
+        PretraziRecepte,
     }
     [Serializable]
     public class TransferKlasa

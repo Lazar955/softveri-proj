@@ -14,6 +14,11 @@ namespace Domen
         public string SifraDijagnoze { get; set; }
         public string Opis { get; set; }
 
+        public override string ToString()
+        {
+            return $"{SifraDijagnoze}, {Opis}";
+        }
+
         public string VratiImeTabele()
         {
             return "Dijagnoza";
@@ -31,7 +36,18 @@ namespace Domen
 
         public List<IOpstiDomenskiObjekat> VratiListu(OleDbDataReader citac)
         {
-            throw new NotImplementedException();
+            List<IOpstiDomenskiObjekat> dijagnoze = new List<IOpstiDomenskiObjekat>();
+            while (citac.Read())
+            {
+                var d = new Dijagnoza();
+
+                d.DijagnozaID = citac.GetInt32(0);
+                d.SifraDijagnoze = citac.GetString(1);
+                d.Opis = citac.GetString(2);
+
+                dijagnoze.Add(d);
+            }
+            return dijagnoze;
         }
 
         public string VratiNazivKljucnogAtributa()

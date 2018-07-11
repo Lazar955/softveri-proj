@@ -30,5 +30,21 @@ namespace Klijent
         {
             new PregledForm(kki).ShowDialog();
         }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            new Login(kki,this).ShowDialog();
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            kki.prekiniKonekciju();
+        }
+
+        private void btnKraj_Click(object sender, EventArgs e)
+        {
+            kki.prekiniKonekciju();
+            this.Dispose();
+        }
     }
 }

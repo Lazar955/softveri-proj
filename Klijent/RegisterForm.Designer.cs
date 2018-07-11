@@ -150,7 +150,8 @@
             this.Controls.Add(this.txtPrezime);
             this.Controls.Add(this.txtIme);
             this.Name = "RegisterForm";
-            this.Text = "RegisterForm";
+            this.Text = "Registracija";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RegisterForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

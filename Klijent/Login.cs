@@ -14,25 +14,37 @@ namespace Klijent
     public partial class Login : Form
     {
         KKInterfejs kki;
-        public Login()
+        private MainForm mainForm;
+        private int rezultat = 0;
+        public Login(KKInterfejs ctrl,MainForm mainForm)
         {
             InitializeComponent();
-            kki = new KKInterfejs();
+            kki = ctrl;
+            this.mainForm = mainForm;
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            int rezultat = kki.LoginDoktora(txtEmail, txtPassword);
+            rezultat = kki.LoginDoktora(txtEmail, txtPassword);
             if (rezultat == 1)
             {
-                //this.Dispose();
+                this.Dispose();
             }
         }
 
         private void linkLblReg_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var reg = new RegisterForm();
+            var reg = new RegisterForm(kki,mainForm);
             reg.Show();
+        }
+
+        private void Login_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if(rezultat == 0)
+            {
+                kki.prekiniKonekciju();
+                mainForm.Dispose();
+            }
         }
     }
 }

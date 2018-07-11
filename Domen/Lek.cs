@@ -20,6 +20,12 @@ namespace Domen
         public string INM { get; set; }
         public string Proizvodjac { get; set; }
 
+
+        public override string ToString()
+        {
+            return $"{Ime}, {Doza}, {Oblik}";
+        }
+
         public string VratiImeTabele()
         {
             return "Lek" ;

@@ -71,6 +71,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReceptiForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReceptiForm.Designer.cs">
+      <DependentUpon>ReceptiForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="RegisterForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +105,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ReceptiForm.resx">
+      <DependentUpon>ReceptiForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RegisterForm.resx">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -116,6 +125,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Domen\Domen.csproj">
+      <Project>{D9892248-F3C5-48C0-98E7-A92A04A8C9BF}</Project>
+      <Name>Domen</Name>
+    </ProjectReference>
     <ProjectReference Include="..\KontrolerKorisnickogInterfejsa\KontrolerKorisnickogInterfejsa.csproj">
       <Project>{7CACDFA3-3FB1-4B06-8E7B-F34CD0D55B07}</Project>
       <Name>KontrolerKorisnickogInterfejsa</Name>
@@ -144,6 +157,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\add-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Login-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\key-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lock-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\prescription.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exit.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

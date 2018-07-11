@@ -49,6 +49,27 @@ namespace KontrolerKorisnickogInterfejsa
             }
         }
 
+        public int ZapamtiPregled(IOpstiDomenskiObjekat odo)
+        {
+            try
+            {
+                TransferKlasa transfer = new TransferKlasa();
+                transfer.TransferObjekat = odo;
+                transfer.Operacija = Operacije.ZapamtiPregled;
+                formater.Serialize(tok, transfer);
+
+                transfer = formater.Deserialize(tok) as TransferKlasa;
+                return (int)transfer.TransferObjekat;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        
+
         public Doktor ZapamtiDoktora(Doktor doc)
         {
             try
@@ -67,6 +88,41 @@ namespace KontrolerKorisnickogInterfejsa
             }
         }
 
+        internal void prekiniKonekciju()
+        {
+            try
+            {
+                TransferKlasa transfer = new TransferKlasa();
+                transfer.TransferObjekat = null;
+                transfer.Operacija = Operacije.kraj;
+                formater.Serialize(tok, transfer);
+
+                //transfer = formater.Deserialize(tok) as TransferKlasa;
+                //return transfer.TransferObjekat as List<Recept>;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        internal List<Recept> PretraziRecepte(Recept r)
+        {
+            try
+            {
+                TransferKlasa transfer = new TransferKlasa();
+                transfer.TransferObjekat = r;
+                transfer.Operacija = Operacije.PretraziRecepte;
+                formater.Serialize(tok, transfer);
+
+                transfer = formater.Deserialize(tok) as TransferKlasa;
+                return transfer.TransferObjekat as List<Recept>;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
 
         public int ObrisiLek(Lek lek)
         {
@@ -79,6 +135,41 @@ namespace KontrolerKorisnickogInterfejsa
 
                 transfer = formater.Deserialize(tok) as TransferKlasa;
                 return (int)transfer.TransferObjekat;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        internal List<Pacijent> PretraziPacijente(string kriterijum)
+        {
+            try
+            {
+                TransferKlasa transfer = new TransferKlasa();
+                transfer.TransferObjekat = kriterijum;
+                transfer.Operacija = Operacije.PretraziPacijente;
+                formater.Serialize(tok, transfer);
+
+                transfer = formater.Deserialize(tok) as TransferKlasa;
+                return transfer.TransferObjekat as List<Pacijent>;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        internal List<Pacijent> VratiSvePacijente()
+        {
+            try
+            {
+                TransferKlasa transfer = new TransferKlasa();
+                transfer.Operacija = Operacije.VratiSvePacijente;
+                formater.Serialize(tok, transfer);
+
+                transfer = formater.Deserialize(tok) as TransferKlasa;
+                return transfer.TransferObjekat as List<Pacijent>;
             }
             catch (Exception)
             {
@@ -110,11 +201,29 @@ namespace KontrolerKorisnickogInterfejsa
             try
             {
                 TransferKlasa transfer = new TransferKlasa();
-                transfer.Operacija = Operacije.VratiSveDijagnoze;
+                transfer.Operacija = Operacije.VratiSveLekove;
                 formater.Serialize(tok, transfer);
 
                 transfer = formater.Deserialize(tok) as TransferKlasa;
                 return transfer.TransferObjekat as List<Lek>;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public List<Pregled> PretraziPregledePacijnta(Pregled pregled)
+        {
+            try
+            {
+                TransferKlasa transfer = new TransferKlasa();
+                transfer.TransferObjekat = pregled;
+                transfer.Operacija = Operacije.PretraziPregledePacijenta;
+                formater.Serialize(tok, transfer);
+
+                transfer = formater.Deserialize(tok) as TransferKlasa;
+                return transfer.TransferObjekat as List<Pregled>;
             }
             catch (Exception)
             {
