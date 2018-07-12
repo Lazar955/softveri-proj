@@ -322,7 +322,7 @@ namespace KontrolerKorisnickogInterfejsa
                 }
                 else
                 {
-                    MessageBox.Show("Sistem ne moze da pronadje zaposlenog na osnovu unetih vrednosti", "Greska!");
+                    MessageBox.Show("Sistem ne moze da pronadje doktora na osnovu unetih vrednosti", "Greska!");
                     return 0;
                 }
             }
