@@ -148,5 +148,11 @@ namespace KontrolerAplikacioneLogike
 
             return recepti;
         }
+
+        public int AzurirajPacijenta(Pacijent pacijent)
+        {
+            IzmeniSO izmeni = new IzmeniSO();
+            return Convert.ToInt32(izmeni.IzvrsiSO(pacijent));
+        }
     }
 }

@@ -101,6 +101,40 @@ namespace KontrolerKorisnickogInterfejsa
             }
         }
 
+        public int AzurirajPacijenta(DataGridView dgvPacijenti,TextBox txtImePacijenta, TextBox txtPrezimePacijenta, TextBox txtMaticniBrojPacijenta, TextBox txtAdresaPacijenta, ComboBox cmbPol, DateTimePicker dtpDatumRodjenjaPacijenta)
+        {
+            var ime = txtImePacijenta.Text;
+            var prezime = txtPrezimePacijenta.Text;
+            var maticni = txtMaticniBrojPacijenta.Text;
+            var adresa = txtAdresaPacijenta.Text;
+            var pol = cmbPol.SelectedItem;
+            var datumRodjenja = dtpDatumRodjenjaPacijenta.Value.Date;
+
+            if (!fieldsAreValid(new List<TextBox> { txtImePacijenta, txtPrezimePacijenta, txtMaticniBrojPacijenta, txtAdresaPacijenta }))
+            {
+                MessageBox.Show("Niste uneli sve potrebne podatke", "Greska!");
+                return 0;
+            }
+            else
+            {
+                bool p = pol.ToString().ToLower() == "muski" ? true : false;
+                var pac = dgvPacijenti.CurrentRow.DataBoundItem as Pacijent;
+                int rez = komunikacija.AzurirajPacijenta(new Pacijent { PacijentID = pac.PacijentID,Ime = ime, Prezime = prezime, MaticniBroj = maticni, Adresa = adresa, DatumRodjenja = datumRodjenja, Pol = p });
+
+                if (rez > 0)
+                {
+                    MessageBox.Show("Sistem je azurirao pacijenta!");
+
+                    return 1;
+                }
+                else
+                {
+                    MessageBox.Show("Sistem nije azurirao pacijenta", "Greska!");
+                    return 0;
+                }
+            }
+        }
+
         public void DodajRecept(BindingList<Recept> recepti, ComboBox cmbLek, ComboBox cmbDijagnoza, TextBox txtKoriscenje)
         {
 

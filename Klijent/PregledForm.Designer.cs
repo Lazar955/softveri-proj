@@ -73,6 +73,7 @@
             this.btnDodajRecept = new System.Windows.Forms.Button();
             this.btnSacuvajPregled = new System.Windows.Forms.Button();
             this.btnSacuvajPacijenta = new System.Windows.Forms.Button();
+            this.btnIzmeni = new System.Windows.Forms.Button();
             this.btnDodajPacijenta = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -460,6 +461,7 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.btnIzmeni);
             this.panel3.Controls.Add(this.btnDodajPacijenta);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(248, 0);
@@ -545,6 +547,20 @@
             this.btnSacuvajPacijenta.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSacuvajPacijenta.UseVisualStyleBackColor = true;
             this.btnSacuvajPacijenta.Click += new System.EventHandler(this.btnSacuvajPacijenta_Click);
+            // 
+            // btnIzmeni
+            // 
+            this.btnIzmeni.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIzmeni.Image = global::Klijent.Properties.Resources.edit_icon;
+            this.btnIzmeni.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnIzmeni.Location = new System.Drawing.Point(151, 3);
+            this.btnIzmeni.Name = "btnIzmeni";
+            this.btnIzmeni.Size = new System.Drawing.Size(144, 45);
+            this.btnIzmeni.TabIndex = 14;
+            this.btnIzmeni.Text = "Izmeni pacijenta";
+            this.btnIzmeni.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnIzmeni.UseVisualStyleBackColor = true;
+            this.btnIzmeni.Click += new System.EventHandler(this.btnIzmeni_Click);
             // 
             // btnDodajPacijenta
             // 
@@ -641,5 +657,6 @@
         private System.Windows.Forms.Button btnSacuvajPregled;
         private System.Windows.Forms.Button btnObrisiRecept;
         private System.Windows.Forms.Button btnPrikaziRecepte;
+        private System.Windows.Forms.Button btnIzmeni;
     }
 }

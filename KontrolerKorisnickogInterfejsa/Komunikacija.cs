@@ -142,6 +142,24 @@ namespace KontrolerKorisnickogInterfejsa
             }
         }
 
+        public int AzurirajPacijenta(Pacijent pacijent)
+        {
+            try
+            {
+                TransferKlasa transfer = new TransferKlasa();
+                transfer.TransferObjekat = pacijent;
+                transfer.Operacija = Operacije.AzurirajPacijenta;
+                formater.Serialize(tok, transfer);
+
+                transfer = formater.Deserialize(tok) as TransferKlasa;
+                return (int)transfer.TransferObjekat;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         internal List<Pacijent> PretraziPacijente(string kriterijum)
         {
             try

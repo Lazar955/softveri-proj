@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IzmeniSO.cs" />
     <Compile Include="LoginDoktoraSO.cs" />
     <Compile Include="ObrisiLekSO.cs" />
     <Compile Include="OpsteSO.cs" />

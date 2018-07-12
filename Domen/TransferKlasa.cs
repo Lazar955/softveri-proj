@@ -20,6 +20,7 @@ namespace Domen
         ZapamtiPregled,
         PretraziPregledePacijenta,
         PretraziRecepte,
+        AzurirajPacijenta
     }
     [Serializable]
     public class TransferKlasa

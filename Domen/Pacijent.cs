@@ -87,7 +87,7 @@ namespace Domen
 
         public string VratiVrednostiZaAzuriranje()
         {
-            throw new NotImplementedException();
+            return $"Ime='{Ime}', Prezime='{Prezime}', MaticniBroj='{MaticniBroj}',Pol={Pol}, Adresa='{Adresa}',DatumRodjenja='{DatumRodjenja.ToShortDateString()}'";
         }
 
         public string VratiVrednostiZaInsert()

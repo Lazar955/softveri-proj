@@ -82,8 +82,18 @@ namespace Klijent
 
         private void btnSacuvajPacijenta_Click(object sender, EventArgs e)
         {
-            int rezultat = kki.ZapamtiPacijenta(txtImePacijenta, txtPrezimePacijenta,txtMaticniBrojPacijenta,txtAdresaPacijenta,cmbPol,dtpDatumRodjenjaPacijenta);
-            kki.vratiListuPacijenata(dgvPacijenti);
+            if(dgvPacijenti.SelectedRows.Count == 1)
+            {
+                int rezultat = kki.AzurirajPacijenta(dgvPacijenti, txtImePacijenta, txtPrezimePacijenta, txtMaticniBrojPacijenta, txtAdresaPacijenta, cmbPol, dtpDatumRodjenjaPacijenta);
+                kki.vratiListuPacijenata(dgvPacijenti);
+            }
+            else
+            {
+                int rezultat = kki.ZapamtiPacijenta(txtImePacijenta, txtPrezimePacijenta, txtMaticniBrojPacijenta, txtAdresaPacijenta, cmbPol, dtpDatumRodjenjaPacijenta);
+                kki.vratiListuPacijenata(dgvPacijenti);
+            }
+
+            
         }
 
         private void btnDodajRecept_Click(object sender, EventArgs e)
@@ -137,6 +147,26 @@ namespace Klijent
             {
                 MessageBox.Show("Potrebno je selektovati pregled", "Greska");
             }
+        }
+
+        private void btnIzmeni_Click(object sender, EventArgs e)
+        {
+            if (dgvPacijenti.SelectedRows.Count == 1)
+            {
+                tabControl1.SelectedIndex = 1;
+                txtAdresaPacijenta.Enabled = true;
+                txtPrezimePacijenta.Enabled = true;
+                txtImePacijenta.Enabled = true;
+                txtMaticniBrojPacijenta.Enabled = true;
+                dtpDatumRodjenjaPacijenta.Enabled = true;
+                cmbPol.Enabled = true;
+                btnSacuvajPacijenta.Enabled = true;
+            }
+            else
+            {
+                MessageBox.Show("Selektuj pacijenta kojeg zelis da azuriras");
+            }
+                
         }
     }
 }
